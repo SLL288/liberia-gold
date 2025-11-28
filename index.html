@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>利比里亚金矿进入体系演示</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+        "Helvetica Neue", Arial, "Noto Sans", "PingFang SC", "Microsoft YaHei",
+        sans-serif;
+      background: #f5f7fb;
+      color: #222;
+      line-height: 1.6;
+    }
+    header {
+      background: linear-gradient(135deg, #0f4c81, #1d976c);
+      color: #fff;
+      padding: 32px 16px 40px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0 0 8px;
+      font-size: 32px;
+      letter-spacing: 2px;
+    }
+    header p {
+      margin: 4px 0;
+      font-size: 14px;
+      opacity: 0.9;
+    }
+    .tagline {
+      margin-top: 10px;
+      font-size: 13px;
+      opacity: 0.85;
+    }
+    .container {
+      max-width: 1100px;
+      margin: -30px auto 40px;
+      padding: 0 16px;
+    }
+    .card {
+      background: #fff;
+      border-radius: 14px;
+      box-shadow: 0 12px 30px rgba(15, 76, 129, 0.12);
+      padding: 22px 22px 20px;
+      margin-bottom: 20px;
+    }
+    .card h2 {
+      margin-top: 0;
+      font-size: 20px;
+      border-left: 4px solid #0f4c81;
+      padding-left: 10px;
+      line-height: 1.2;
+    }
+    .card h3 {
+      margin-top: 16px;
+      font-size: 16px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(15, 76, 129, 0.08);
+      color: #0f4c81;
+      font-size: 11px;
+      margin-left: 6px;
+    }
+    .highlight {
+      background: #fff7e0;
+      border-left: 4px solid #ffb300;
+      padding: 10px 12px;
+      border-radius: 8px;
+      font-size: 13px;
+      margin: 10px 0;
+    }
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .col-6 {
+      flex: 1 1 260px;
+    }
+    .image-box {
+      border-radius: 12px;
+      overflow: hidden;
+      background: #e1e7f5;
+      border: 1px solid #d3ddf0;
+      margin: 6px 0 4px;
+    }
+    .image-box img {
+      width: 100%;
+      display: block;
+      object-fit: cover;
+    }
+    .image-caption {
+      font-size: 12px;
+      color: #555;
+      margin-top: 4px;
+    }
+    ul {
+      padding-left: 18px;
+      margin: 8px 0;
+      font-size: 14px;
+    }
+    li {
+      margin-bottom: 4px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin: 8px 0 4px;
+    }
+    th, td {
+      padding: 8px;
+      border: 1px solid #dde2f3;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #f1f4fd;
+      font-weight: 600;
+    }
+    .pill {
+      display: inline-block;
+      padding: 2px 6px;
+      border-radius: 999px;
+      background: #e9f5ff;
+      color: #0f4c81;
+      font-size: 11px;
+      margin-right: 4px;
+      margin-bottom: 2px;
+    }
+    .timeline {
+      list-style: none;
+      padding-left: 4px;
+      margin: 8px 0;
+      font-size: 13px;
+    }
+    .timeline li {
+      margin-bottom: 6px;
+      position: relative;
+      padding-left: 22px;
+    }
+    .timeline li::before {
+      content: "";
+      position: absolute;
+      left: 6px;
+      top: 6px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #0f4c81;
+    }
+    .timeline li::after {
+      content: "";
+      position: absolute;
+      left: 9px;
+      top: 16px;
+      width: 2px;
+      height: calc(100% - 16px);
+      background: #d3ddf0;
+    }
+    .timeline li:last-child::after {
+      display: none;
+    }
+    .footer-note {
+      text-align: center;
+      font-size: 12px;
+      color: #777;
+      margin-top: 10px;
+    }
+    .label {
+      display: inline-block;
+      padding: 0 6px;
+      border-radius: 4px;
+      background: #ecf4ff;
+      color: #2459a6;
+      font-size: 11px;
+      margin-right: 4px;
+    }
+    .risk-tag-low {
+      color: #1b8740;
+      font-weight: 600;
+    }
+    .risk-tag-mid {
+      color: #c77b00;
+      font-weight: 600;
+    }
+    .risk-tag-high {
+      color: #c62828;
+      font-weight: 600;
+    }
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 24px;
+      }
+      .card {
+        padding: 18px 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>利比里亚金矿进入体系演示</h1>
+  <p>Legal Mining Ledger · Investment &amp; Compliance Entry System (Demo)</p>
+  <p class="tagline">从“看准国家”到“合规出金”的完整路径示意</p>
+</header>
+
+<div class="container">
+
+  <!-- 一、国家与黄金市场概况 -->
+  <section class="card">
+    <h2>一、利比里亚国家与黄金市场概况<span class="badge">Overview</span></h2>
+    <div class="row">
+      <div class="col-6">
+        <h3>1.1 国家位置与基本信息</h3>
+        <ul>
+          <li>位于西非大西洋沿岸，东接科特迪瓦，北邻几内亚，西北与塞拉利昂接壤。</li>
+          <li>国土面积约 111,370 平方公里，人口约 520 万（2025 年估计）。</li>
+          <li>首都：蒙罗维亚（Monrovia），沿海港口为矿产品出口提供良好条件。</li>
+          <li>英语为官方语言，便于国际合作与技术团队沟通。</li>
+        </ul>
+        <div class="highlight">
+          利比里亚位于西非地盾南部，与加纳、塞拉利昂同属世界著名的 Birrimian 金矿带延伸区，
+          属于全球公认的黄金成矿有利地区之一。
+        </div>
+      </div>
+      <div class="col-6">
+  <h3>1.2 黄金价格与宏观环境</h3>
+
+  <!-- 实时黄金价格趋势图（TradingView 小组件） -->
+  <div class="image-box" style="padding:0;">
+    <div class="tradingview-widget-container" style="height:320px;">
+      <div id="tradingview_gold_widget"></div>
+      <script type="text/javascript"
+        src="https://s3.tradingview.com/tv.js">
+      </script>
+      <script type="text/javascript">
+        new TradingView.widget({
+          "width": "100%",
+          "height": 320,
+          "symbol": "OANDA:XAUUSD",        // 现货黄金兑美元
+          "interval": "M",                 // 日线
+          "timezone": "Etc/UTC",
+          "theme": "light",
+          "style": "1",
+          "locale": "zh_CN",
+          "toolbar_bg": "#f1f3f6",
+          "enable_publishing": false,
+          "hide_legend": true,
+          "save_image": false,
+          "container_id": "tradingview_gold_widget"
+        });
+      </script>
+    </div>
+  </div>
+
+  <div class="image-caption">
+    实时黄金价格趋势图（XAU/USD 日线），由 TradingView 提供在线数据。
+  </div>
+
+  <ul>
+    <li>黄金作为全球避险资产，高金价环境下，单位吨矿的利润空间更大。</li>
+    <li>金价越高，对同一矿山项目的抗风险能力越强，回本周期相对缩短。</li>
+    <li>在合规前提下，黄金项目兼具资源属性与金融属性，有利于构建稳健现金流。</li>
+  </ul>
+</div>
+
+    </div>
+  </section>
+
+  <!-- 二、监管架构与外资准入 -->
+  <section class="card">
+    <h2>二、监管架构与外资准入框架<span class="badge">Regulatory</span></h2>
+    <div class="row">
+      <div class="col-6">
+        <h3>2.1 主要政府机构</h3>
+        <table>
+          <thead>
+          <tr>
+            <th>机构名称</th>
+            <th>职能概述</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>矿业与能源部<br>Ministry of Mines &amp; Energy (MME)</td>
+            <td>统一监管全国矿业：矿业政策制定、矿权划定与登记、Class A / Class B 等许可证审批。</td>
+          </tr>
+          <tr>
+            <td>财政与税务相关机构</td>
+            <td>负责公司所得税、特许权使用费等税种征收，监管矿业税收与出口收入合规。</td>
+          </tr>
+          <tr>
+            <td>环境监管机构</td>
+            <td>审批环境与社会影响评估（ESIA），颁发 Environmental Clearance Certificate 并跟踪执行。</td>
+          </tr>
+          <tr>
+            <td>中央银行 / 外汇与出口管理机构</td>
+            <td>监管黄金出口、结算与外汇回流，确保资金通过正规金融通道进出。</td>
+          </tr>
+          </tbody>
+        </table>
+
+        <h3>2.2 外资许可分类</h3>
+        <ul>
+          <li><strong>Class A 勘探许可证（Exploration License）</strong>：适用于大面积区域性勘查，可在全国范围内布局目标。</li>
+          <li><strong>Class B 小规模采矿许可证（Class B Mining License）</strong>：适用于一定规模以下的工业化开采。</li>
+        </ul>
+        <p style="font-size:13px;">
+          外资参与 Class B 项目时，一般需满足以下条件：
+        </p>
+        <ul style="font-size:13px;">
+          <li>MOU（谅解备忘录）：明确合作框架、权责与分成。</li>
+          <li>Local Chief Approval：当地酋长 / 社区领袖的书面同意。</li>
+          <li>Environmental Clearance Certificate：环境监管机构出具的环境许可。</li>
+        </ul>
+      </div>
+
+      <!-- 2.3：用你的流程图内容做成监管结构示意 -->
+      <div class="col-6">
+        <h3>2.3 Class B 矿权监管结构与流程示意</h3>
+
+        <style>
+          .reg-flow {
+            display: flex;
+            gap: 18px;
+            overflow-x: auto;
+            padding: 8px 4px 4px;
+          }
+          .reg-col {
+            flex: 0 0 230px;
+            position: relative;
+            padding: 4px 8px 6px 18px;
+          }
+          .reg-col::before {
+            content: "";
+            position: absolute;
+            top: 10px;
+            bottom: 10px;
+            left: 8px;
+            width: 2px;
+            background: #d3ddf0;
+          }
+          .reg-col:not(:last-child)::after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            right: -9px;
+            width: 18px;
+            height: 2px;
+            background: #cfdaf3;
+          }
+          .reg-box {
+            position: relative;
+            background: #e9f3ff;
+            border-radius: 12px;
+            padding: 8px 10px;
+            margin-bottom: 10px;
+            border: 1px solid #cfdaf3;
+            font-size: 12px;
+            line-height: 1.5;
+            box-shadow: 0 4px 10px rgba(15, 76, 129, 0.07);
+          }
+          .reg-box::before {
+            content: "";
+            position: absolute;
+            left: -12px;
+            top: 14px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #0f4c81;
+          }
+          .reg-box.level-title {
+            background: #fff7e0;
+            border-color: #ffd36a;
+            font-weight: 600;
+          }
+          .reg-box span.tag {
+            display: inline-block;
+            margin-top: 4px;
+            padding: 1px 6px;
+            border-radius: 999px;
+            background: #ffffffaa;
+            font-size: 11px;
+            color: #2459a6;
+          }
+        </style>
+
+        <div class="reg-flow">
+          <div class="reg-col">
+            <div class="reg-box level-title">
+              国家划区与探矿许可
+              <span class="tag">国家级监管</span>
+            </div>
+            <div class="reg-box">地矿部提供优质矿区</div>
+            <div class="reg-box">
+              申请 Class B 探矿许可<br>
+              进入实地勘探阶段
+            </div>
+          </div>
+
+          <div class="reg-col">
+            <div class="reg-box level-title">
+              采矿许可与社区谈判
+              <span class="tag">许可审批</span>
+            </div>
+            <div class="reg-box">申请 Class B 采矿许可 · 环境评测</div>
+            <div class="reg-box">
+              村落谈判：学校、水井、公共设施、粮食援助等配套项目
+            </div>
+            <div class="reg-box">筹集人员设备 · 警察/保安负责安保</div>
+            <div class="reg-box">修路、建设营地与基础设施</div>
+          </div>
+
+          <div class="reg-col">
+            <div class="reg-box level-title">
+              生产建设与提炼
+              <span class="tag">运营阶段</span>
+            </div>
+            <div class="reg-box">搭建生产线与洗选、重选、精炼设备</div>
+            <div class="reg-box">组织生产提炼，建立产量与品位台账</div>
+            <div class="reg-box">持续落实村落谈判中的承诺项目</div>
+          </div>
+
+          <div class="reg-col">
+            <div class="reg-box level-title">
+              指定收购与收益分配
+              <span class="tag">出口与金融</span>
+            </div>
+            <div class="reg-box">指定合规收购方（精炼厂或贸易公司）</div>
+            <div class="reg-box">警察不定期参与运输监管，确保安全合规</div>
+            <div class="reg-box">收取外围管理费与营地管理费用</div>
+            <div class="reg-box">股东按季度分红，收益通过正规渠道回流</div>
+          </div>
+        </div>
+
+        <div class="image-caption" style="margin-top:8px;">
+          图 2：基于 Class B License 的监管结构与业务链条示意（由流程图抽象而成）。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 三、矿权布局与重点区块 -->
+  <section class="card">
+    <h2>三、矿权布局与重点工作区块<span class="badge">Tenements</span></h2>
+    <div class="row">
+      <div class="col-6">
+        <h3>3.1 全境勘探与开采资质</h3>
+        <div class="image-box">
+          <img src="https://via.placeholder.com/600x320?text=Liberia+Licenses+Overview" alt="利比里亚全境勘探开采资质示意">
+        </div>
+        <div class="image-caption">
+          图 3：利比里亚境内现有勘探与采矿权分布示意图，可在正式版本中替换为实际许可证分布图。
+        </div>
+        <p style="font-size:13px;">
+          当前团队在利比里亚境内已取得覆盖全境的勘探与开采资质，
+          可在多个关键成矿带上布置工作阵地，为后续多矿点、多项目布局打下基础。
+        </p>
+      </div>
+      <div class="col-6">
+        <h3>3.2 重点区块示例</h3>
+        <ul style="font-size:13px;">
+          <li><strong>区块 A：约 137 平方公里</strong><br>
+            · 已探明约 1/3 资源量，正在持续开采。<br>
+            · 位于主要构造带与有利岩性组合上方，具备持续增储潜力。
+          </li>
+          <li><strong>区块 B：约 566 平方公里</strong><br>
+            · 目前处于系统勘探阶段，已圈定若干优先靶区。<br>
+            · 通过遥感、地形分析与实地验证，逐步锁定高潜力沟谷与古河道。
+          </li>
+        </ul>
+        <div class="image-box">
+          <img src="https://via.placeholder.com/600x260?text=Key+Blocks+137km2+566km2" alt="重点矿权区块示意">
+        </div>
+        <div class="image-caption">
+          图 4：137 km² 与 566 km² 重点矿权区块示意，可在将来替换为高精度 DEM 与地质底图。
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 四、金矿类型：岩金与沙金 -->
+  <section class="card">
+    <h2>四、金矿类型：岩金与沙金<span class="badge">Ore Types</span></h2>
+    <div class="row">
+      <div class="col-6">
+        <h3>4.1 岩金</h3>
+        <ul style="font-size:13px;">
+          <li>形成于原生金矿床中，金粒常嵌在石英脉、岩体裂隙或硫化物矿物中。</li>
+          <li>一般需要爆破、破碎、磨矿、选矿等完整工艺流程。</li>
+          <li>品位通常较高，但前期建设投入和单吨成本相对更高。</li>
+        </ul>
+
+        <h3>4.2 沙金</h3>
+        <ul style="font-size:13px;">
+          <li>由岩金矿床长期风化、搬运、再沉积形成，富集在河流、冲沟、河床、阶地及古河道中。</li>
+          <li>金粒形态多为片金、砂金或颗粒金，粒度较粗，易于富集。</li>
+          <li>可通过淘金盘、溜槽、水选设备等方式直接进行重力富集。</li>
+          <li>建设周期短，适合以现金流为导向的项目布局。</li>
+        </ul>
+      </div>
+      <div class="col-6">
+        <h3>4.3 沙金提炼示例</h3>
+        <div class="image-box">
+          <img src="https://via.placeholder.com/600x320?text=Alluvial+Gold+Smelting" alt="沙金提炼示意">
+        </div>
+        <div class="image-caption">
+          图 5：沙金提炼后金锭示意图。示例产量：约 5 天 / 10 班，可提炼约 800 克、纯度约 96% 的金锭（示意数据，可按实际更新）。
+        </div>
+        <p style="font-size:13px;">
+          通过持续优化溜槽结构与回收工艺，可在控制成本的前提下提高回收率，
+          形成稳定、可预测的产量与现金流。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 五、从手工到机械化：现场与生产路径 -->
+  <section class="card">
+    <h2>五、从手工到机械化：现场与生产路径<span class="badge">Field</span></h2>
+    <div class="row">
+      <div class="col-6">
+        <h3>5.1 本地手工开采现状</h3>
+        <div class="image-box">
+          <img src="https://via.placeholder.com/600x320?text=Local+Artisanal+Mining" alt="本地人手工开采矿区">
+        </div>
+        <div class="image-caption">
+          图 6：本地人手工开采矿区，开采方式粗放、回收率有限，对环境扰动较大。
+        </div>
+        <p style="font-size:13px;">
+          许多砂金点目前仍由本地居民以手工方式采挖，
+          这些区域往往仅开采了浅部、易见的矿体，深部与外围矿化尚未系统评估，
+          为引入机械化与专业团队提供了空间。
+        </p>
+      </div>
+      <div class="col-6">
+        <h3>5.2 废弃矿坑与初探探洞</h3>
+        <div class="image-box">
+          <img src="https://via.placeholder.com/600x150?text=Abandoned+Workings" alt="废弃人工开采矿区">
+        </div>
+        <div class="image-caption">
+          图 7：本地人已经废弃的人工开采矿区，是二次勘查和再开发的重要靶区。
+        </div>
+        <div class="image-box">
+          <img src="https://via.placeholder.com/600x150?text=Trial+Pit" alt="初探探洞">
+        </div>
+        <div class="image-caption">
+          图 8：通过机械或人工方式挖掘试验探洞，对砂层厚度、含金品位进行快速验证。
+        </div>
+        <p style="font-size:13px;">
+          对这些历史采空区与废弃坑进行系统复查，
+          可以在降低勘查风险的同时，找到新的可采资源和更合理的开采布局方案。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 六、金矿项目进入路径总览 -->
+  <section class="card">
+    <h2>六、金矿项目进入路径总览<span class="badge">Entry Flow</span></h2>
+    <h3>6.1 投资角色与路径类型</h3>
+    <table>
+      <thead>
+      <tr>
+        <th>投资人类型</th>
+        <th>典型进入模式</th>
+        <th>矿权类型/阶段</th>
+        <th>大致资金特点</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>个人 / 小规模投资者</td>
+        <td>入股现有矿权项目，参与设备合资或部分股权。</td>
+        <td>Class B 小规模采矿或参与单一砂金点。</td>
+        <td>单笔资金量适中，以现金流分成为主，管理压力较低。</td>
+      </tr>
+      <tr>
+        <td>中小型公司</td>
+        <td>独立注册项目公司，申请勘查/采矿许可，自建生产线。</td>
+        <td>Class A 勘查 + Class B 采矿的组合路径。</td>
+        <td>需承担勘查与建设成本，但享有更大资源与上升空间。</td>
+      </tr>
+      <tr>
+        <td>大型资源企业 / 基金</td>
+        <td>并购现有项目或与政府、本地企业组建合资公司。</td>
+        <td>多个矿权组合，向中大型开采体量发展。</td>
+        <td>资金量大，重视储量规模与合规结构，目标为长期稳定产能。</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <h3>6.2 时间轴：从决策到出金</h3>
+    <ul class="timeline">
+      <li><strong>阶段 0：前期决策</strong> – 研读国家法规、矿业政策与 Birrimian 金带资料，筛选优先矿区。</li>
+      <li><strong>阶段 1：公司与合规架构</strong> – 在利比里亚注册公司，完成股东协议与税务登记。</li>
+      <li><strong>阶段 2：矿权获取</strong> – 按要求申请 Class A / Class B 许可证，签署 MOU 与社区协议。</li>
+      <li><strong>阶段 3：勘查与验证</strong> – 通过地质勘查、试采与试验探洞，形成资源量与经济性评估。</li>
+      <li><strong>阶段 4：建设与投产</strong> – 修路、建营地、安装生产线，取得环境许可后试生产。</li>
+      <li><strong>阶段 5：稳定生产与出口</strong> – 形成稳定产量，通过指定收购方合规出口黄金，按协议分红。</li>
+    </ul>
+  </section>
+
+  <!-- 七、关键流程与文件清单 -->
+  <section class="card">
+    <h2>七、关键流程与文件清单<span class="badge">Documents</span></h2>
+
+    <h3>7.1 流程–责任–时间表（示意）</h3>
+    <table>
+      <thead>
+      <tr>
+        <th>阶段</th>
+        <th>关键动作</th>
+        <th>主要责任方</th>
+        <th>示意时间</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>前期调研</td>
+        <td>研究政策、地质资料，初步经济测算。</td>
+        <td>投资团队 / 顾问</td>
+        <td>1–3 个月</td>
+      </tr>
+      <tr>
+        <td>公司与法律结构搭建</td>
+        <td>公司注册、股权协议、税务登记、银行账户。</td>
+        <td>投资人 &amp; 律师 &amp; 会计师</td>
+        <td>1–2 个月</td>
+      </tr>
+      <tr>
+        <td>矿权申请</td>
+        <td>提交 Class A / Class B 申请，技术与资金证明。</td>
+        <td>项目公司 &amp; MME</td>
+        <td>2–6 个月</td>
+      </tr>
+      <tr>
+        <td>环境与社区</td>
+        <td>ESIA、社区协商、签署 Community Development Agreement。</td>
+        <td>项目公司 &amp; 环境部门 &amp; 社区</td>
+        <td>并行 3–6 个月</td>
+      </tr>
+      <tr>
+        <td>建设与试生产</td>
+        <td>基建与设备安装、试运行与工艺优化。</td>
+        <td>项目公司 &amp; 承包商</td>
+        <td>6–18 个月</td>
+      </tr>
+      <tr>
+        <td>正式生产与出口</td>
+        <td>按法规缴税，合规出口黄金，建立分红机制。</td>
+        <td>项目公司 &amp; 税务 / 海关 / 银行</td>
+        <td>长期</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <h3>7.2 主要协议与文件类型</h3>
+    <table>
+      <thead>
+      <tr>
+        <th>文件类型</th>
+        <th>主要内容</th>
+        <th>备注</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>股东协议 / 投资协议</td>
+        <td>股权比例、出资方式、收益分配、退出机制、管理权安排。</td>
+        <td>可按“管理方 + 出资方”模式设计分红结构。</td>
+      </tr>
+      <tr>
+        <td>MOU / 合作框架协议</td>
+        <td>与政府或本地合作方约定合作范围、期限与责任。</td>
+        <td>是申请 Class B 等许可证的重要附件。</td>
+      </tr>
+      <tr>
+        <td>社区与土地协议</td>
+        <td>土地使用、补偿方式、就业与社会责任承诺。</td>
+        <td>确保项目长期稳定运行。</td>
+      </tr>
+      <tr>
+        <td>环境与安全文件</td>
+        <td>环境许可、环境管理计划、生产安全制度与应急预案。</td>
+        <td>关系到合规检查与可持续经营。</td>
+      </tr>
+      <tr>
+        <td>销售与出口协议</td>
+        <td>金锭销售条款、定价机制、结算货币与支付路径。</td>
+        <td>确保资金通过合规渠道回流，降低金融风险。</td>
+      </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 八、风险–收益与投资方案示意 -->
+  <section class="card">
+    <h2>八、风险–收益与投资方案示意<span class="badge">Risk &amp; Return</span></h2>
+    <div class="row">
+      <div class="col-6">
+        <h3>8.1 主要风险维度</h3>
+        <table>
+          <thead>
+          <tr>
+            <th>风险类别</th>
+            <th>说明</th>
+            <th>风险水平</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>资源风险</td>
+            <td>实际品位与资源量低于预期，或砂层连续性不足。</td>
+            <td class="risk-tag-mid">中</td>
+          </tr>
+          <tr>
+            <td>合规风险</td>
+            <td>许可延迟、法规调整，或环保与社区条款执行不到位。</td>
+            <td class="risk-tag-mid">中</td>
+          </tr>
+          <tr>
+            <td>运营风险</td>
+            <td>设备故障、管理不善、成本失控导致现金流波动。</td>
+            <td class="risk-tag-mid">中</td>
+          </tr>
+          <tr>
+            <td>价格与汇率风险</td>
+            <td>国际金价与汇率波动影响利润空间与回本周期。</td>
+            <td class="risk-tag-high">中–高</td>
+          </tr>
+          <tr>
+            <td>政治与社会风险</td>
+            <td>政策调整、社会稳定性变化、社区关系紧张等。</td>
+            <td class="risk-tag-mid">中</td>
+          </tr>
+          </tbody>
+        </table>
+        <div class="highlight">
+          当前黄金价格处于高位区间，高金价本身有助于对冲部分项目风险，
+          但任何投资决策仍需要基于严谨的地质勘查与财务模型。
+        </div>
+      </div>
+
+      <div class="col-6">
+        <h3>8.2 投资方案示例（可根据实际项目调整）</h3>
+        <table>
+          <thead>
+          <tr>
+            <th>方案</th>
+            <th>结构与特点</th>
+            <th>预期年回报（示意）</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td>方案 1：整线投资</td>
+            <td>
+              · 一次性投资约 1M USD，建设完整生产线与营地<br>
+              · 规划 2–4 年开采周期，集中开发优质矿段<br>
+              · 投资人掌握生产线及运营控制权
+            </td>
+            <td>约 40–60% / 年</td>
+          </tr>
+          <tr>
+            <td>方案 2：股权参股</td>
+            <td>
+              · 以股权形式参与一个或多个矿点<br>
+              · 由专业团队负责日常经营，投资人享受分红<br>
+              · 通过分散布局降低单一矿点风险
+            </td>
+            <td>约 40–60% / 年（视具体矿点组合而定）</td>
+          </tr>
+          <tr>
+            <td>方案 3：设备租赁</td>
+            <td>
+              · 以购买挖掘机等关键设备方式参与，单机投资约 200k USD<br>
+              · 按月收取租金，按 7 个月/年、20–25 天/月开工测算<br>
+              · 设备寿命 3–4 年，期满可转售至建筑行业
+            </td>
+            <td>约 20–30% / 年</td>
+          </tr>
+          </tbody>
+        </table>
+        <p style="font-size:12px;color:#666;margin-top:6px;">
+          上述收益区间为示意性测算，实际回报取决于金价、品位、回收率、成本控制及合规执行情况。
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 九、总结与下一步 -->
+  <section class="card">
+    <h2>九、总结与下一步</h2>
+    <p style="font-size:14px;">
+      本网页基于当前利比里亚金矿项目的基础资料，对国家背景、黄金市场、矿权布局、
+      监管架构、现场情况以及潜在投资方案进行了系统梳理。通过 Class B License 监管流程、
+      岩金与沙金的类型分析以及实际勘探–生产路径，可以看出利比里亚在当前高金价环境下
+      具备显著的资源与投资优势。
+    </p>
+    <p style="font-size:13px;">
+      下一步可以：
+    </p>
+    <ul style="font-size:13px;">
+      <li>将占位图替换为真实地图、许可证分布与现场照片。</li>
+      <li>把投资方案中的参数替换为实际财务模型输出的测算结果。</li>
+      <li>在页面中增加中英文切换、PDF 白皮书下载按钮以及投资人问答模块。</li>
+    </ul>
+    <div class="footer-note">
+      © 演示页面 · 可根据项目需要自由修改与扩展
+    </div>
+  </section>
+
+</div>
+</body>
+</html>
